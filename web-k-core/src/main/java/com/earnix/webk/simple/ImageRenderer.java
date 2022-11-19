@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 
 
 /**
@@ -168,7 +169,7 @@ public class ImageRenderer {
                 usage("File to render is not found: " + url);
             }
         } else {
-            File out = File.createTempFile("fs", ".png");
+            File out = Files.createTempFile("fs", ".png").toFile();
             System.out.println("Saving image to " + out.getAbsolutePath());
             renderToImage(url, out.getAbsolutePath(), DEFAULT_WIDTH);
         }
